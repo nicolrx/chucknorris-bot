@@ -17,7 +17,7 @@ const replyMessage = (message, text) => {
         if (response.indexOf(category)) {
           request(`https://api.chucknorris.io/jokes/random?category=${category}`, (_err, _res, body) => {
             body = JSON.parse(body)
-            
+
             let reply = {
               reply: body.value
             }
@@ -68,7 +68,6 @@ export const bot = (body, response, callback) => {
   console.log(body);
   if (body.message) {
     client.connect.handleMessage({ body }, response, replyMessage)
-    callback(null, { result: 'Bot answered :)' })
   } else if (body.text) {
     replyMessage(null, body.text)
   } else {
