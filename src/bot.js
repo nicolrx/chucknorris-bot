@@ -68,6 +68,7 @@ export const bot = (body, response, callback) => {
   console.log(body);
   if (body.message) {
     client.connect.handleMessage({ body }, response, replyMessage)
+    callback(null, { result: 'Bot answered :)' })
   } else if (body.text) {
     replyMessage(null, body.text)
   } else {
